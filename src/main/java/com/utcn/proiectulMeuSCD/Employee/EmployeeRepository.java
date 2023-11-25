@@ -12,12 +12,8 @@ import java.util.Optional;
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
-    @Query(value="select e from employee e where e.id = :id")
     Employee findEmployeeById(@Param("id") Long id);
 
     void deleteById(Long id);
-
-    @Query(value="select e from employee e")
-    List<Employee> findAllEmployees();
 
 }

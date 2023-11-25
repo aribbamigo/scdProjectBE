@@ -21,13 +21,12 @@ public class Department {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Integer id;
+    private Long id;
 
     private String description;
 
-
     @JsonBackReference
     @ManyToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="parentid_id")
+    @JoinColumn(name="parent_id")
     private Department parentID;
 }

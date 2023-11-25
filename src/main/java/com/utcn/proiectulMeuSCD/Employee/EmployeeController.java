@@ -1,5 +1,6 @@
 package com.utcn.proiectulMeuSCD.Employee;
 
+import com.utcn.proiectulMeuSCD.DTO.EmployeeBasic;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +15,7 @@ public class EmployeeController {
     private final EmployeeService employeeService;
 
     @GetMapping(value="/getAllEmployees")
-    public List<Employee> allEmployees() {
+    public List<EmployeeBasic> allEmployees() {
         return employeeService.getAllEmployees();
     }
 }

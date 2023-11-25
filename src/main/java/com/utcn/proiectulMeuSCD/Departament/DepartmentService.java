@@ -28,15 +28,14 @@ public class DepartmentService {
     }
 
     public void updateDepartment(Long id, Department department) {
-        Department updateTheDepartment = departmentRepository.findById(id);
+        Department updateTheDepartment = departmentRepository.findDepartmentById(id);
         updateTheDepartment.setDescription(department.getDescription());
         updateTheDepartment.setParentID(department.getParentID());
         departmentRepository.saveAndFlush(updateTheDepartment);
     }
 
     public void deleteDepartment(Long id) {
-        Department deleteTheDepartment = departmentRepository.findById(id);
+        Department deleteTheDepartment = departmentRepository.findDepartmentById(id);
         departmentRepository.delete(deleteTheDepartment);
     }
-
 }

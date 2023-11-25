@@ -1,8 +1,12 @@
 package com.utcn.proiectulMeuSCD.Employee;
 
+import com.utcn.proiectulMeuSCD.DTO.EmployeeBasic;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class EmployeeService {
@@ -13,9 +17,9 @@ public class EmployeeService {
         this.employeeRepository = employeeRepository;
     }
 
-    public List<Employee> getAllEmployees(){
-
-        return employeeRepository.findAllEmployees();
+    public List<EmployeeBasic> getAllEmployees(){
+        List<Employee> employees = employeeRepository.findAll();
+        return employees.stream().map(EmployeeBasic::new).collect(Collectors.toList());
     }
 
     public void createEmployee(Employee employee) {
