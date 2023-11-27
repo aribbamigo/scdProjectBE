@@ -1,15 +1,12 @@
 package com.utcn.proiectulMeuSCD.Departament;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.utcn.proiectulMeuSCD.Employee.Employee;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Setter
@@ -28,5 +25,5 @@ public class Department {
     @JsonBackReference
     @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="parent_id")
-    private Department parentID;
+    private Department parent;
 }
