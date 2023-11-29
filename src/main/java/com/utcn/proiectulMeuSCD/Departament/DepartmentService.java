@@ -48,6 +48,8 @@ public class DepartmentService {
 
     public void deleteDepartment(Long id) {
         List<Employee> employees = employeeRepository.findAllByDepartmentId(id);
+        List<Department> departments = departmentRepository.findAllByParentId(id);
+        departments.forEach(department -> department.setParent(null));
         employees.forEach(employee -> employee.setDepartment(null));
         Department deleteTheDepartment = departmentRepository.findDepartmentById(id);
 
