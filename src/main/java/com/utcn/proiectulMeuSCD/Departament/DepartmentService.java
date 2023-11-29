@@ -1,8 +1,8 @@
 package com.utcn.proiectulMeuSCD.Departament;
 
 import com.utcn.proiectulMeuSCD.DTO.DepartmentBasic;
-import com.utcn.proiectulMeuSCD.DTO.EmployeeBasic;
 import com.utcn.proiectulMeuSCD.Employee.Employee;
+import com.utcn.proiectulMeuSCD.Employee.EmployeeRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,9 +13,11 @@ import java.util.stream.Collectors;
 public class DepartmentService {
 
     private final DepartmentRepository departmentRepository;
+    private final EmployeeRepository employeeRepository;
 
-    public DepartmentService(DepartmentRepository departmentRepository) {
+    public DepartmentService(DepartmentRepository departmentRepository, EmployeeRepository employeeRepository) {
         this.departmentRepository = departmentRepository;
+        this.employeeRepository = employeeRepository;
     }
 
 
@@ -45,7 +47,10 @@ public class DepartmentService {
     }
 
     public void deleteDepartment(Long id) {
+        List<Employee> employees = employeeRepository.findAllByDepartmentId(id);
+        employees.forEach(employee -> employee.setDepartment(null));
         Department deleteTheDepartment = departmentRepository.findDepartmentById(id);
+
         departmentRepository.delete(deleteTheDepartment);
     }
 
