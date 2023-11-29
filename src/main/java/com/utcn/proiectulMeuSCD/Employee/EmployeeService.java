@@ -39,8 +39,8 @@ public class EmployeeService {
         return employeeConverted;
     }
 
-    public void getEmployeeById(Long id) {
-        employeeRepository.findById(id);
+    public EmployeeBasic getEmployeeById(Long id) {
+        return new EmployeeBasic(employeeRepository.findEmployeeById(id));
     }
 
     public void updateEmployee(Long id, EmployeeBasic employee) {

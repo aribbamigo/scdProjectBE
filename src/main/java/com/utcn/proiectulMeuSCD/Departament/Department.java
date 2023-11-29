@@ -26,4 +26,5 @@ public class Department {
     @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="parent_id")
     private Department parent;
+
 }

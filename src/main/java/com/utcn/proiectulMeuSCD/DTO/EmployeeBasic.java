@@ -1,6 +1,7 @@
 package com.utcn.proiectulMeuSCD.DTO;
 
 
+import com.utcn.proiectulMeuSCD.Departament.Department;
 import com.utcn.proiectulMeuSCD.Employee.Employee;
 import lombok.*;
 
