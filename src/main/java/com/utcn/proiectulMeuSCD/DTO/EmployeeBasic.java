@@ -25,7 +25,7 @@ public class EmployeeBasic {
         this.id = employee.getId();
         this.name = employee.getName();
         this.email = employee.getEmail();
-        this.departmentId = employee.getDepartment().getId();
+        this.departmentId = employee.getDepartment() != null ? employee.getDepartment().getId() : null;
         this.managerId = employee.getManager() != null ? employee.getManager().getId() : this.id;
     }
 }

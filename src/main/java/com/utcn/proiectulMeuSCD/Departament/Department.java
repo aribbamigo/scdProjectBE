@@ -23,7 +23,7 @@ public class Department {
     private String description;
 
     @JsonBackReference
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name="parent_id")
     private Department parent;
 

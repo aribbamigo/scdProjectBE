@@ -52,6 +52,8 @@ public class DepartmentService {
         departments.forEach(department -> department.setParent(null));
         employees.forEach(employee -> employee.setDepartment(null));
         Department deleteTheDepartment = departmentRepository.findDepartmentById(id);
+        departmentRepository.saveAll(departments);
+        employeeRepository.saveAll(employees);
 
         departmentRepository.delete(deleteTheDepartment);
     }

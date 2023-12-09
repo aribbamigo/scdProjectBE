@@ -21,7 +21,7 @@ public class EmployeeService {
 
     public List<EmployeeBasic> getAllEmployees() {
         List<Employee> employees = employeeRepository.findAll();
-        return employees.stream().map(EmployeeBasic::new).collect(Collectors.toList());
+            return employees.stream().map(EmployeeBasic::new).collect(Collectors.toList());
     }
 
     public void createEmployee(EmployeeBasic employee) {
@@ -55,6 +55,7 @@ public class EmployeeService {
     public void deleteEmployee(Long id) {
         List<Employee> employees = employeeRepository.getAllByManagerId(id);
         employees.forEach(employee -> employee.setManager(employeeRepository.findEmployeeById(employee.getId())));
+        employeeRepository.saveAllAndFlush(employees);
         employeeRepository.deleteById(id);
     }
 }
