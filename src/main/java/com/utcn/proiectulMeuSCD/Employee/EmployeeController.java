@@ -25,7 +25,7 @@ public class EmployeeController {
     }
 
     @GetMapping(value="/getEmployee")
-    public EmployeeBasic getEmployeeService(@PathParam("id") Long id) {
+    public EmployeeBasic getEmployee(@PathParam("id") Long id) {
         return employeeService.getEmployeeById(id);
     }
 
@@ -45,5 +45,15 @@ public class EmployeeController {
     public ResponseEntity<String> createEmployee(@RequestBody EmployeeBasic employee) {
         employeeService.createEmployee(employee);
         return new ResponseEntity<>("Created!", HttpStatus.OK);
+    }
+
+    @GetMapping(value="/getManagersByDepartment/{id}")
+    public List<EmployeeBasic> getManagersByDepartment(@PathVariable("id") Long id) {
+        return employeeService.getManagersByDepartment(id);
+    }
+
+    @GetMapping(value="/getEmployeesByDepartment/{id}")
+    public List<EmployeeBasic> getEmployeesByDepartment(@PathVariable("id") Long id) {
+        return employeeService.getEmployeesByDepartment(id);
     }
 }

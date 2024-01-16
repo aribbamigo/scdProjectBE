@@ -58,4 +58,14 @@ public class EmployeeService {
         employeeRepository.saveAllAndFlush(employees);
         employeeRepository.deleteById(id);
     }
+
+    public List<EmployeeBasic> getManagersByDepartment(Long id) {
+        List<Employee> employees = employeeRepository.findAllManagersByDepartment(id);
+        return employees.stream().map(EmployeeBasic::new).collect(Collectors.toList());
+    }
+
+    public List<EmployeeBasic> getEmployeesByDepartment(Long id) {
+        List<Employee> employees = employeeRepository.findAllByDepartmentId(id);
+        return employees.stream().map(EmployeeBasic::new).collect(Collectors.toList());
+    }
 }
